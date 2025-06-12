@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holloway Trust</title>
+  <style>
+  
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: white; 
+      color: #1a1a1a;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.2rem;
+    }
+
+    .menu {
+      width: 24px;
+      height: 18px;
+      position: relative;
+    }
+
+    .menu span {
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: #1a1a1a;
+      border-radius: 3px;
+    }
+
+    .menu span:nth-child(1) {
+      top: 0;
+    }
+
+    .menu span:nth-child(2) {
+      top: 7.5px;
+    }
+
+    .menu span:nth-child(3) {
+      bottom: 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4d6d;
+    }
+
+    .signup-btn {
+      background-color: #004d4a;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .hero-wrapper {
+      padding: 0 1rem;
+    }
+
+    .hero {
+      background: url('images/save.jpg') center/cover no-repeat;
+      border-radius: 20px;
+      padding: 1rem 5rem 10rem;
+      position: relative;
+      color: white;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      max-width: 320px;
+    }
+/* Floating Cards */
+    .floating-card {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      background: white;
+	  color: #333;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-size: 0.75rem;
+      min-width: max-content;
+    }
+
+    .floating-card img.icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Positioning */
+    .card-cta {
+      top: 65%;
+      left: 1rem;
+      font-weight: bold;
+      background-color: #004d4a;
+      color: white;
+      padding: 0.9rem 1.5rem;
+    }
+
+    .card-interest {
+      top: 76%;
+      right: 1rem;
+    }
+
+    .card-earlypay {
+      top: 88%;
+      left: 1rem;
+    }
+
+    .legal-text {
+      padding: 1rem;
+      font-size: 0.75rem;
+      text-align: right;
+      color: #333;
+	  background-color: #edf7f5;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 4rem 3rem 12rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+      }
+
+      .floating-card {
+        font-size: 1rem;
+      }
+
+      .card-cta {
+        left: 2rem;
+      }
+
+      .card-earlypay {
+        left: 2rem;
+      }
+
+      .card-interest {
+        right: 2rem;
+      }
+    }
+	.carousel-wrapper {
+  padding: 2rem 1rem;
+}
+
+.carousel-text h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: verdana;
+}
+
+.carousel-text p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-text .blue {
+  color: #007f8a;
+  font-weight: 500;
+}
+
+.carousel-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.carousel-card {
+  flex: 0 0 82%;
+  scroll-snap-align: start;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 300px;
+  height: 330px;
+  position: relative;
+  background: #ccc;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.floating-info {
+  position: absolute;
+  bottom: 55px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.75rem;
+}
+
+.floating-info img {
+  width: 28px;
+  height: 28px;
+  margin-right: 0.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 0.85rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  font-weight: 500;
+}
+
+.dots {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.dot.active {
+  background: #007f8a;
+}
+.white-bg {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+}
+
+/* Monzo Style Section */
+.monzo-section {
+  position: relative;
+  padding: 5rem 1rem;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.monzo-center h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0b0c0c;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.monzo-center .rating {
+  font-size: 1rem;
+  color: #0b0c0c;
+}
+
+.monzo-center .stars {
+  height: 1.2rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
+
+/* Profile Circles */
+.monzo-profile {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.monzo-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* Positioning */
+.top-left { top: 18%; left: 5%; }
+.mid-left { top: 62%; left: 5%; }
+.top-right { top: 1%; left: 45%; }
+.mid-right { top: 18%; right: 5%; }
+.bottom-left { bottom: 3%; left: 45%; }
+.bottom-right { bottom: 19%; right: 5%; }
+{
+.holloway-section {
+  text-align: center;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card-container {
+  background-color: #f3fdfb;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+} 
+
+  </style>
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="logo">Holloway</div>
+    <button class="signup-btn">Login</button>
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    padding: 15px 30px;
+  }
+
+  header.scrolled {
+    background-color: rgba(255, 255, 255, 0.1); /* transparent */
+    backdrop-filter: blur(10px);
+    color: white;
+  }
+
+  body {
+    padding-top: 80px;
+    margin: 0;
+  }
+
+  header a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+
+  header a:hover {
+    text-decoration: underline;
+  }
+</style>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-wrapper">
+    <div class="hero">
+      <h1>Make your money more Holloway</h1>
+      <p>Automate bills. Organise how you spend. Save in clever new ways. All with a free Holloway Checking Account.</p>
+
+      <!-- Floating Cards -->
+      <div class="floating-card card-cta">
+        Open an account for free
+      </div>
+
+      <div class="floating-card card-interest">
+        <img src="images/icon-earlypay.jpg" alt="Interest" class="icon" />
+        <span><b>Interest Earned  </b><strong>$9.37</strong><br><small>Interest for May so far</small></span>
+      </div>
+
+      <div class="floating-card card-earlypay">
+        <img src="images/icon-earlypa.jpg" alt="Monzo icon" class="icon" />
+        <span><strong>Get paid one business day early</strong><br><small>When paid by bacs🎉</small></span>
+      </div>
+    </div>
+  </section>
+  <div class="legal-text">
+    US residents. Ts&Cs apply.
+  </div>
+  
+ <!-- White Background Wrapper -->
+<section class="carousel-wrapper white-bg">
+  <div class="carousel-text">
+    <h2>Banking never<br />felt like this</h2>
+    <p>
+      Earn cashback. Get paid early. Split bills.
+      <span class="blue">Free yourself from travel fees.</span>
+    </p>
+  </div>
+
+  <div class="carousel-scroll">
+    <!-- Card 1 -->
+    <div class="carousel-card">
+      <div class="card-image">
+        <img src="images/card1.jpg" alt="Card 1" />
+        <div class="floating-info">
+          <img src="images/iconn.jpg" alt="Icon" />
+          <div>
+            <strong>2–10% cashback</strong><br />
+            <small>On your favourite brands</small>
+          </div>
+        </div>
+        <p class="caption">Personal cashback offers vary</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="carousel-card">
+      <div class="card-image">
+        <img src="images/card2.jpg" alt="Card 2" />
+        <div class="floating-info">
+          <img src="images/icon-earlypa.jpg" alt="Icon" />
+          <div>
+            <strong>Get paid one business day early💸</strong><br />
+            <small>When paid by Bacs</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="carousel-card">
+      <div class="card-image">
+        <img src="images/card3.jpg" alt="Card 3" />
+        <div class="floating-info">
+          
+          <div>
+          
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="carousel-card">
+      <div class="card-image">
+        <img src="images/card4.jpg" alt="Card 4" />
+        <div class="floating-info">
+          <img src="images/iconnnn.jpg" alt="Icon" />
+          <div>
+            <strong>Settle up seamlessly</strong><br />
+            <small>Split bills in the app</small>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="carousel-card">
+      <div class="card-image">
+        <img src="images/card5.jpg" alt="Card 5" />
+        <div class="floating-info">
+          <img src="images/iconnn.jpg" alt="Icon" />
+          <div>
+            <strong>Pay anywhere in any country</strong><br />
+            <small>Your bank account for going abroad</small>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination dots -->
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+<section class="monzo-section">
+  <!-- Floating profile images and cards -->
+  <div class="monzo-profile top-left">
+    <img src="images/hero2.jpg" alt="User 1">
+  </div>
+  <div class="monzo-profile mid-left">
+    <img src="images/image4.jpg" alt="User 2">
+  </div>
+  <div class="monzo-profile top-right">
+    <img src="images/image3.jpg" alt="User 3">
+ <div class="floating-card card-request">
+   💸 paid you <span class="amount">$26.06</span>
+  </div>
+</div>
+  <div class="monzo-profile mid-right">
+    <img src="images/image2.jpg" alt="User 4">
+  </div>
+  <div class="monzo-profile bottom-left">
+    <img src="images/hero3.jpg" alt="User 5">
+    <div class="card">requested <span class="green">£19.20</span></div>
+  </div>
+  <div class="monzo-profile bottom-right">
+    <img src="images/image1.jpg" alt="User 6">
+  </div>
+
+  <!-- Center text -->
+  <div class="monzo-center">
+    <h2>12 million personal<br>and business customers bank<br>with Holloway.</h2>
+    <div class="rating">
+      Excellent
+      <img src="images/rating.jpg" alt="Rating stars" class="stars">
+    </div>
+  </div>
+</section>
+<section class="holloway-section">
+  <div class="card-container">
+    <img src="images/card6.jpg" alt="holloway Card Interface" class="card-image" />
+  </div>
+   <div class="card-container">
+    <img src="images/card7.jpg" alt="holloway Card Interface" class="card-image" />
+  </div>
+   <div class="card-container">
+    <img src="images/card8.jpg" alt="holloway Card Interface" class="card-image" />
+  </div>
+</section>
+<section style="margin: 0; height: 15vh; display: flex; justify-content: center; align-items: center;">
+  <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">
+    Open an account for free
+  </button>
+</section>
+<section style="display: flex; justify-content: center; background-color: white; padding: 20px; min-height: 100vh; box-sizing: border-box;">
+
+  <!-- Inner Section with Dark Background -->
+  <div style="background-color: #001d26; padding: 20px; width: 100%; max-width: 400px; border-radius: 20px; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
+
+    <!-- Floating Notification Card -->
+    <div style="background-color: #ffffff; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); width: 100%; position: relative; top: 10px; margin-bottom: 20px;">
+      <img src="images/icon-earlypa.jpg" alt="Notification Icon" style="width: 24px; height: 24px; border-radius: 6px; margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <div style="font-weight: bold; font-size: 14px;">$6.20 at Sainsbury's</div>
+        <div style="color: #888; font-size: 13px;">You've spent $16.60 today</div>
+      </div>
+      <div style="font-size: 11px; color: #999;">now</div>
+    </div>
+
+    <!-- Main Card with Image Only -->
+    <div style="width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="width: 100%; height: 500px; background-color: #d2f1e8; display: flex; align-items: center; justify-content: center;">
+        <img src="images/card9.jpg" alt="Main Overview" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+
+    <!-- Text BELOW the card on the dark background -->
+    <div style="padding: 20px 0 0 0; width: 100%; color: white; text-align: left;">
+      <h1 style="font-size: 30px; margin: 60px  8px 0;">Get to know where<br> your money goes</h1>
+      <p style="margin: 10px; margin-top: 10px; font-size: 20px; color: white;">
+        See instant notifications the second you pay. Then set budgets for things like groceries and going out, and get alerts if you’re spending too fast (if you want them).
+      </p>
+
+      <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Open an account for free
+        </button>
+      </div>
+    </div>
+
+  </div>
+  
+</section>
+<!-- White Background Section with Heading -->
+  <div style="margin-top: 40px; text-align: center;">
+    <h1 style="font-weight: bold; font-size: 30px; color: #000;"><b>Grow (and grow and grow) your money.</b></h1>
+  </div>
+<section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon1.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+      Earn 3.25% AER<br>interest (variable)
+    </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #000;">
+      Paid monthly with an Instant Access Savings Pot or Instant Access Cash ISA. Deposit up to $1,000,000 with no minimum deposit, and access your money at any time.
+    </p>
+  <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Explore Savings Pots
+        </button>
+      </div>
+
+</section>
+<section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon2.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+      Invest in your future
+	  </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #333;">
+      Invest as little as $1 in a choice of 3 investment options, and the experts will take care of everything for you.
+The value of your investments could go up or down and you could get back less than you put in.
+    </p>
+  <div style="margin-top: 0; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Explore Investments
+        </button>
+      </div>
+
+</section>
+<section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon3.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+      Save as you Spend
+    </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #000;">
+      Every time you spend money, we’ll round it up to the nearest dollar and put the spare change in a Pot for you. All you need to do is switch on roundups.
+People on Holloway save on average $100 extra each year this way.
+    </p>
+  <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Explore Savings features
+        </button>
+      </div>
+	  </section>
+	  <section style="display: flex; justify-content: center; background-color: white; padding: 20px; min-height: 100vh; box-sizing: border-box;">
+
+  <!-- Inner Section with Dark Background -->
+  <div style="background-color: #001d26; padding: 20px; width: 100%; max-width: 400px; border-radius: 20px; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
+
+    <!-- Floating Notification Card -->
+    <div style="background-color: #ffffff; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); width: 100%; position: relative; top: 10px; margin-bottom: 20px;">
+      <img src="images/icon-earlypa.jpg" alt="Notification Icon" style="width: 24px; height: 24px; border-radius: 6px; margin-right: 10px;">
+      <div style="flex-grow: 1;">
+        <div style="font-weight: bold; font-size: 14px;">Holloway</div>
+        <div style="color: #888; font-size: 13px;">Your Xbox bill is $5 more this month</div>
+      </div>
+      <div style="font-size: 11px; color: #999;">now</div>
+    </div>
+
+    <!-- Main Card with Image Only -->
+    <div style="width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="width: 100%; height: 500px; background-color: #d2f1e8; display: flex; align-items: center; justify-content: center;">
+        <img src="images/card10.jpg" alt="Main Overview" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+
+    <!-- Text BELOW the card on the dark background -->
+    <div style="padding: 20px 0 0 0; width: 100%; color: white; text-align: left;">
+      <h1 style="font-size: 30px; margin: 60px  8px 0;">Banish bill admin</h1>
+      <p style="margin: 10px; margin-top: 10px; font-size: 20px; color: white;">
+       Set up Direct Debits and standing orders to come directly from a Pot. So things like your council tax, Wifi and gas bill can come straight out of your Bills Pot.<br>
+
+<br>We’ll also let you know if a bill’s more expensive than it was last month, so there’s no nasty surprises. 
+      </p>
+
+      <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Organise bill with Holloway
+        </button>
+      </div>
+    </div>
+
+  </div> 
+</section>
+<section style="background-color: white; padding: 60px 20px; text-align: center;">
+  <img src="images/card11.jpg" alt="Split Bills" style="max-width: 100%; height: auto; display: block; margin: 0 auto; width: 80%;">
+
+  <h2 style="color: #333 font-size: 28px; margin-top: 30px; text-align: left;">Spend with friends</h2>
+  
+  <p style="color: #333; font-size: 16px; margin: 15px 0 30px;text-align: left;">
+    We’ve been saving the nation from sending awkward ‘pay-me-back’ texts since 2018. Split bills, send payment reminders, and stay on top of joint costs.<br>
+We’ll work out who owes what and make it easy to settle up, even if someone’s not on Holloway.
+  </p>
+
+  <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+    Split bills with Holloway
+  </button>
+</section>
+<section style="background-color: white; padding: 40px 20px; text-align: left;">
+  <h1 style="color: black; font-size: 32px; font-weight: bold; margin: 0;">
+    Free yourself<br>from travel fees
+  </h1>
+</section>
+<section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon4.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+     Get the real exchange rate
+    </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #000;">
+    We don’t charge fees for<br> spending on your card abroad, and we pass Mastercard's<br> exchange rate directly onto<br> you, without extra charges.
+    </p>
+	  </section>
+	  <section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon5.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+    Stay in the know
+    </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #000;">
+     You’ll see the real exchange rate in the app when you land. We'll<br> also send you a spending report<br> so you can look back on the cost<br> of your trip.
+    </p>
+	</section>
+	  <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Travel with Holloway
+        </button>
+      </div>
+	  <section style="background-color: white; padding: 60px 20px; text-align: center;">
+  <img src="images/card12.jpg" alt="Split Bills" style="max-width: 100%; height: auto; display: block; margin: 0 auto; width: 80%;">
+
+  <h2 style="color: #333 font-size: 30px; margin-top: 30px; text-align: left;">Speak to us<br>wherever,whenever.</h2>
+  
+  <p style="color: #333; font-size: 18px; margin: 15px 0 30px;text-align: left;">
+   We don’t have opening or closing<br> hours. That means you can speak<br> to a real-life human through in-<br>app chat, whenever you need to,<br> wherever you are.
+  </p>
+  </section>
+  <section style="background-color: white; padding: 40px 0;">
+  <div style="background-color: #f2f8f5; max-width: 600px; margin: 0 auto; padding: 30px; text-align: left; border-radius: 10px;">
+    <h2 style="margin-bottom: 10px;">Get more bank<br>for your buck</h2>
+    <p style="margin-bottom: 30px;">Upgrade your personal checking<br> account based on what’s<br> important to you. Here’s what you<br> get with Max, our top plan:</p>
+
+    <img src="images/card13.jpg" alt="Plan 1" style="width: 100%; max-width: 300px; margin: 10px auto; display: block;">
+    <img src="images/card14.jpg" alt="Plan 2" style="width: 100%; max-width: 300px; margin: 10px auto; display: block;">
+    <img src="images/card15.jpg" alt="Plan 3" style="width: 100%; max-width: 300px; margin: 10px auto; display: block;">
+	<img src="images/card16.jpg" alt="Plan 4" style="width: 100%; max-width: 300px; margin: 10px auto 20px auto; display: block;">
+ <div style="margin-top: 16px; display: flex; justify-content: center;">
+    <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Explore plans
+        </button>
+</div>
+    <p style="font-size: 12px; color: #666; margin-top: 5px; text-align: center;">Aged 18+. US residents. Ts&Cs apply</p>
+  </div>
+</section>
+<h1 style="text-align: left; font-size: 30px;"><b>Choose how you<br>borrow money</b></h1>
+<p style="text-align: left; font-size: 20px;">Whether you need an overdraft<br>to cushion your checking account<br>or a loan for bigger buys,we've<br>got options.</p>
+<section style="text-align: center; padding: 40px; font-family: sans-serif;">
+  <!-- Replace this image src with your own -->
+  <img src="images/card17.jpg" alt="Overdraft Illustration" style="max-width: 200px; margin-bottom: 20px;" />
+
+  <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px; text-align: left;">
+    Overdrafts
+  </h2>
+
+  <a href="#"
+     style="
+       display: inline-block;
+       padding: 15px 30px;
+       background-color: #004d4a;
+       color: white;
+       border-radius: 30px;
+       text-decoration: none;
+       font-size: 16px;
+     ">
+    Explore overdrafts
+  </a>
+</section>
+<section style="text-align: center; padding: 40px; font-family: sans-serif;">
+  <!-- Replace this image src with your own -->
+  <img src="images/card18.jpg" alt="flex credit card Illustration" style="max-width: 200px; margin-bottom: 20px;" />
+
+  <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px; text-align: left;">
+    Flex Credit Card
+  </h2>
+
+  <a href="#"
+     style="
+       display: inline-block;
+       padding: 15px 30px;
+       background-color: #004d4a;
+       color: white;
+       border-radius: 30px;
+       text-decoration: none;
+       font-size: 16px;
+     ">
+    Explore Flex
+  </a>
+</section>
+<section style="text-align: center; padding: 40px; font-family: sans-serif;">
+  <!-- Replace this image src with your own -->
+  <img src="images/card19.jpg" alt="Loans Illustration" style="max-width: 200px; margin-bottom: 20px;" />
+
+  <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px; text-align: left;">
+    Loans
+  </h2>
+
+  <a href="#"
+     style="
+       display: inline-block;
+       padding: 15px 30px;
+       background-color: #004d4a;
+       color: white;
+       border-radius: 30px;
+       text-decoration: none;
+       font-size: 16px;
+     ">
+    Explore loans
+  </a>
+</section>
+	  <section style="display: flex; justify-content: center; background-color: white; padding: 20px; min-height: 70vh; box-sizing: border-box;">
+
+  <!-- Inner Section with Dark Background -->
+  <div style="background-color: #001d26; padding: 20px; width: 100%; max-width: 400px; border-radius: 20px; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
+
+    <div style="padding: 20px 0 0 0; width: 100%; color: white; text-align: left;">
+      <h1 style="font-size: 30px; margin: 60px  8px 0;">Industry-first tech<br>built to protect</h1>
+      <p style="margin: 10px; margin-top: 10px; font-size: 20px; color: white;">
+     Our innovative technology is<br> designed to stop scammers in<br> their tracks. Like our trio of<br> extra security controls, which<br> you can turn on for added<br> protection. Use known<br> locations, a secret QR code,<br> or trusted contacts to stay safe<br> when making large payments.
+      </p>
+      <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button style="background-color: #004d4a; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer;">
+          Security at Holloway
+        </button>
+      </div>
+    </div>
+
+  </div> 
+</section>
+<h1 style="text-align: left; font-size: 30px;"><b>Everything you<br>want and need from<br>your bank,in one<br>hot coral package</b></h1>
+<section style="background-color: white; padding: 40px 16px; font-family: sans-serif; box-sizing: border-box;">
+
+  <div style="background-color: #f2f8f5; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-sizing: border-box;">
+
+    <!-- Icon -->
+    <div style="margin-bottom: 16px;">
+      <img src="images/icon6.jpg" alt="Interest Icon" style="width: 40px; height: 40px; border-radius: 10px;">
+    </div>
+
+    <!-- Heading -->
+    <h2 style="font-size: 25px; margin: 0 0 12px 0; font-weight: bold; color: #000;">
+     24/7 customer<br>support
+    </h2>
+
+    <!-- Description -->
+    <p style="margin: 0; font-size: 18px; color: #000;">
+   We don’t have opening or<br> closing hours. Message us here<br> whenever you need help,<br> wherever you need it.
+    </p>
+	  </section>
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <!-- Red Box with top & bottom curved edges -->
+  <div style="
+    background-color: #ff5a5f;
+    padding: 50px 20px;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    color: white;
+    margin-bottom: -40px;
+    position: relative;
+    z-index: 2;
+  ">
+    <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">
+      Join Holloway your favorite bank
+    </h1>
+    <p style="font-size: 18px; line-height: 1.5; max-width: 600px; margin: 0 auto;">
+      Discover a better way to bank with Holloway. Trusted by thousands for fast, secure, and modern financial solutions built just for you.
+    </p>
+  </div>
+
+  <!-- Footer underneath with slight visual overlap -->
+  <div style="
+    background-color: #00101e;
+    padding: 60px 20px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+  ">
+    <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 30px; text-align: left;">Holloway</h2>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; font-size: 16px;">
+      <a href="#" style="color: white; text-decoration: none;">Help centre</a>
+      <a href="#" style="color: white; text-decoration: none;">About us</a>
+      <a href="#" style="color: white; text-decoration: none;">Our tone of voice</a>
+      <a href="#" style="color: white; text-decoration: none;">Savings Accounts</a>
+	  <a href="#" style="color: white; text-decoration: none;">Blog</a>
+	  <a href="#" style="color: white; text-decoration: none;">FAQ</a>
+	  <a href="#" style="color: white; text-decoration: none;">Press</a>
+	  <a href="#" style="color: white; text-decoration: none;">Terms & Condition</a>
+	  <a href="#" style="color: white; text-decoration: none;">Browser support policy</a>
+	  <a href="#" style="color: white; text-decoration: none;">	Lost your phone and card?</a>
+	  <a href="#" style="color: white; text-decoration: none;">How we protect</a>
+    </div>
+  </div>
+ <!-- Contact Icons (centered, no underline) -->
+<div style="
+  background-color: #00101e;
+  color: white;
+  text-align: center;
+  padding: 30px 0 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
+  <a href="mailto:support@hollowaybank.com" style="color: white; margin: 0 15px; font-size: 20px; text-decoration: none;">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="tel:+1234567890" style="color: white; margin: 0 15px; font-size: 20px; text-decoration: none;">
+    <i class="fas fa-phone"></i>
+  </a>
+  <a href="https://wa.me/1234567890" target="_blank" style="color: white; margin: 0 15px; font-size: 22px; text-decoration: none;">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+  <!-- Regulatory Notice Section (inside same dark background as footer) -->
+<div style="
+  background-color: #212c49;
+  color: white;
+  padding: 40px 20px;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
+  <p style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">
+    Existing customers can get help here
+  </p>
+  <p style="font-size: 16px; line-height: 1.6; margin: 0;">
+    Holloway Bank Inc. is a company registered in the United States (No.09446231). Holloway Bank Inc. is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority. Our financial Services Register number is 730427. Our address is 350 Mission Street, San Francisco, CA 94105, USA.
+  </p>
+</div>
+</section>
+
+<!-- Chat Icon -->
+<div onclick="toggleChat()" style="
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background-color: #ff5a5f;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+">
+  <i class="fas fa-comment-alt" style="font-size: 24px;"></i>
+</div>
+
+<!-- Chat Box -->
+<div id="chat-box" style="
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 320px;
+  height: 400px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 999;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+">
+  <div style="background-color: #ff5a5f; color: white; padding: 15px; font-weight: bold;">
+    Holloway Support
+  </div>
+  <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+    <div style="align-self: flex-start; background-color: #ffe5e7; color: #333; padding: 10px 14px; border-radius: 15px; max-width: 80%;">
+      Hello 👋
+    </div>
+    <div style="align-self: flex-start; background-color: #ffe5e7; color: #333; padding: 10px 14px; border-radius: 15px; max-width: 80%;">
+      How may I help you today?
+    </div>
+  </div>
+  <div id="typing-indicator" style="display: none; padding: 0 15px 10px; font-size: 13px; color: #888;">Typing...</div>
+  <div style="display: flex; border-top: 1px solid #ccc;">
+    <input id="user-input" type="text" placeholder="Type your message..." style="flex: 1; border: none; padding: 10px; outline: none;" onkeydown="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()" style="border: none; background: #ff5a5f; color: white; padding: 0 15px; cursor: pointer;">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+<script>
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 10) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+<script>
+  let hasReplied = false;
+
+  function toggleChat() {
+    const box = document.getElementById('chat-box');
+    box.style.display = box.style.display === 'none' || box.style.display === '' ? 'flex' : 'none';
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('user-input');
+    const msg = input.value.trim();
+    if (msg === "") return;
+
+    const chat = document.getElementById("chat-messages");
+    const typing = document.getElementById("typing-indicator");
+
+    // User message
+    const userBubble = document.createElement("div");
+    userBubble.style.alignSelf = "flex-end";
+    userBubble.style.backgroundColor = "#ff5a5f";
+    userBubble.style.color = "white";
+    userBubble.style.padding = "10px 14px";
+    userBubble.style.borderRadius = "15px";
+    userBubble.style.maxWidth = "80%";
+    userBubble.textContent = msg;
+    chat.appendChild(userBubble);
+    chat.scrollTop = chat.scrollHeight;
+
+    input.value = "";
+
+    // Show typing...
+    typing.style.display = "block";
+
+    setTimeout(() => {
+      typing.style.display = "none";
+
+      let response = "";
+      if (!hasReplied) {
+        response = `I'm sorry to hear that. For a quicker response, kindly contact our 
+          <a href="https://wa.me/1234567890" target="_blank" style="color: #ff5a5f; font-weight: bold; text-decoration: none;">WhatsApp Support</a>.`;
+        hasReplied = true;
+      }
+
+      const botBubble = document.createElement("div");
+      botBubble.style.alignSelf = "flex-start";
+      botBubble.style.backgroundColor = "#ffe5e7";
+      botBubble.style.color = "#333";
+      botBubble.style.padding = "10px 14px";
+      botBubble.style.borderRadius = "15px";
+      botBubble.style.maxWidth = "80%";
+      botBubble.innerHTML = response;
+
+      chat.appendChild(botBubble);
+      chat.scrollTop = chat.scrollHeight;
+    }, 1000);
+  }
+</script>
+<script>
+  const scrollContainer = document.querySelector('.carousel-scroll');
+  const dots = document.querySelectorAll('.dot');
+  const cards = document.querySelectorAll('.carousel-card');
+
+  function updateDots(index) {
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[index]) {
+      dots[index].classList.add('active');
+    }
+  }
+
+  // Scroll to card on dot click
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const card = cards[i];
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        updateDots(i);
+      }
+    });
+  });
+
+  // Update active dot on scroll
+  scrollContainer.addEventListener('scroll', () => {
+    const scrollLeft = scrollContainer.scrollLeft;
+    const cardWidth = cards[0].offsetWidth + 16; // 16px = gap
+    const index = Math.round(scrollLeft / cardWidth);
+    updateDots(index);
+  });
+</script>
+</body>
+</html>
